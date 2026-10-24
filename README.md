@@ -1,6 +1,6 @@
 # Lenval Properties
 
-Sito web istituzionale per Lenval Properties, sviluppato con Next.js. Il progetto presenta il brand e i suoi sviluppi immobiliari ad Abu Dhabi, con animazioni, video e contenuti 3D interattivi.
+Sito web istituzionale per Lenval Properties, sviluppato con Next.js utilizzando la repository https://github.com/morluto/rea per fare il reverse engeneering del sito di ispirazione . Il progetto presenta il brand e i suoi sviluppi immobiliari ad Abu Dhabi, con animazioni, video e contenuti 3D interattivi.
 
 ## Requisiti
 
