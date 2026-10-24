@@ -1,0 +1,396 @@
+/* ═══════════════════════════════════════════════════════════════
+   Lenval Properties — Global Styles
+   ═══════════════════════════════════════════════════════════════ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Font Faces ─────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('/fonts/HelveticaNowDisplay-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('/fonts/HelveticaNowDisplay-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('/fonts/HelveticaNowDisplay-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Financier Display';
+  src: url('/fonts/FinancierDisplay-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── Custom Properties ──────────────────────────────────────── */
+
+:root {
+  /* Fonts */
+  --font-helvetica: 'Helvetica Now Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-financier: 'Financier Display', 'Georgia', 'Times New Roman', serif;
+
+  /* Colors */
+  --background: #f8f4ee;
+  --foreground: #121212;
+  --accent: #d4a373;
+  --muted: #888888;
+
+  /* Durations */
+  --dur-s: 0.4s;
+  --dur-m: 0.8s;
+  --dur-l: 1.2s;
+
+  /* Scrollbar width — set via JS in layout */
+  --scrollbar-width: 0px;
+}
+
+/* ─── Base / Reset ───────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-helvetica);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* ─── Selection ──────────────────────────────────────────────── */
+
+::selection {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+::-moz-selection {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+/* ─── Hide Scrollbar ─────────────────────────────────────────── */
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Lenis Smooth Scroll ────────────────────────────────────── */
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ─── Media Cover Helpers ────────────────────────────────────── */
+
+.cover-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-video-grade {
+  filter: brightness(0.76) saturate(0.84);
+}
+
+.hero-light {
+  background:
+    radial-gradient(ellipse at 77% 44%, rgba(193, 145, 91, 0.2), transparent 43%),
+    linear-gradient(
+      180deg,
+      rgba(23, 23, 20, 0.3) 0%,
+      rgba(23, 23, 20, 0.04) 34%,
+      rgba(34, 27, 20, 0.12) 58%,
+      rgba(23, 23, 20, 0.68) 100%
+    );
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* ─── Scroll Reveal — Hidden by Default ──────────────────────── */
+
+[data-scroll-reveal] {
+  visibility: hidden;
+}
+
+/* ─── Responsive Typography Scale ────────────────────────────── */
+
+/* H1 — Hero / Display */
+.h1 {
+  font-family: var(--font-financier);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 5vw, 4rem);    /* ~40px → 64px */
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+/* H2 — Section Headings */
+.h2 {
+  font-family: var(--font-financier);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem); /* ~28px → 40px */
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* H3 — Subsection */
+.h3 {
+  font-family: var(--font-financier);
+  font-weight: 400;
+  font-size: clamp(1.375rem, 2.5vw, 1.75rem); /* ~22px → 28px */
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+}
+
+/* P1 — Body Text */
+.p1 {
+  font-family: var(--font-helvetica);
+  font-weight: 400;
+  font-size: clamp(0.875rem, 1.1vw, 0.9375rem); /* ~14px → 15px */
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+/* P2 — Small Body */
+.p2 {
+  font-family: var(--font-helvetica);
+  font-weight: 400;
+  font-size: clamp(0.8125rem, 1vw, 0.875rem); /* ~13px → 14px */
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+/* L1 — Labels / Captions */
+.l1 {
+  font-family: var(--font-helvetica);
+  font-weight: 500;
+  font-size: clamp(0.625rem, 0.85vw, 0.75rem); /* ~10px → 12px */
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* L2 — Micro Labels */
+.l2 {
+  font-family: var(--font-helvetica);
+  font-weight: 500;
+  font-size: 0.625rem; /* 10px */
+  line-height: 1.3;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ─── Transition Container ───────────────────────────────────── */
+
+.transition-container {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.transition-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--foreground);
+  transform-origin: bottom;
+  transform: scaleY(0);
+}
+
+/* ─── Section Themes ─────────────────────────────────────────── */
+
+.theme_on-dark {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+.theme_on-dark ::selection {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.theme_on-color {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.theme_on-accent {
+  background-color: var(--accent);
+  color: var(--foreground);
+}
+
+/* ─── Line Decorations ───────────────────────────────────────── */
+
+.line-h {
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  opacity: 0.15;
+}
+
+.line-v {
+  width: 1px;
+  height: 100%;
+  background-color: currentColor;
+  opacity: 0.15;
+}
+
+.line-accent {
+  opacity: 1;
+  background-color: var(--accent);
+}
+
+/* Animated line — grows from left via GSAP */
+.line-reveal {
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  opacity: 0.15;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+/* ─── Utility ────────────────────────────────────────────────── */
+
+.serif {
+  font-family: var(--font-financier);
+}
+
+.sans {
+  font-family: var(--font-helvetica);
+}
+
+/* Container max-width matching Lenval's layout */
+.container-lenval {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.25rem, 4vw, 3.5rem);
+  padding-right: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+/* Full-bleed override */
+.full-bleed {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+/* Aspect ratio helpers */
+.aspect-hero {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+/* ─── Tailwind Layer Extensions ──────────────────────────────── */
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gpu {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+}
+
+  .menu-enter {
+    animation: menu-enter 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes menu-enter {
+    from {
+      opacity: 0;
+      clip-path: inset(0 0 100% 0);
+    }
+
+    to {
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
